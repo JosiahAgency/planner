@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@source "../views";
+
+:root{
+    font-family: "Nunito", sans-serif;
+}
