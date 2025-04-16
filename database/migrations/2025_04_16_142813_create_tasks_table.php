@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->date('due-date');
+            $table->date('due_date');
             $table->integer('priorities');
             $table->integer('status');
             $table->unsignedBigInteger('owner_id');

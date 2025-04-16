@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Tasks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     public function createTask(Request $request)
     {
-        $taskItem = Tasks::create([
+        Tasks::create([
             'title' => $request['title'],
             'description' => $request['description'],
             'due_date' => $request['due_date'],
@@ -21,5 +22,4 @@ class TaskController extends Controller
         return redirect('/')->with('success', 'Task created successfully');
     }
 
-    public function viewTasks(){}
 }
