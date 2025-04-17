@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+
+    public function loginView(){
+        return view('auth.login');
+    }
+
+    public function registerView(){
+        return view('auth.register');
+    }
+
     public function createAccount(Request $request)
     {
         $validatedData = $request->validate([
@@ -42,11 +51,6 @@ class UserController extends Controller
             $user = Auth::user();
             $token = $user->createToken('plannerApp')->plainTextToken;
 
-            return response()->json([
-                'message' => 'Login successful',
-                'user' => $user,
-                'token' => $token
-            ], 200);
         } else {
             return response()->json([
                 'message' => 'Invalid credentials'
@@ -61,6 +65,6 @@ class UserController extends Controller
         Session::flush();
         Auth::logout();
 
-        return Redirect('/login');
+        return Redirect('/');
     }
 }
