@@ -44,11 +44,11 @@
                 </div>
             </div>
         </div>
-        <div class="flex-1 overflow-auto">
+        <div class="flex flex-col items-center overflow-auto p-0.5">
             @if ($taskList && $taskList->count() > 0)
                 @foreach ($taskList as $task)
-                    <div
-                        class="bg-white rounded-lg shadow hover:shadow-md transition-all transform hover:scale-[1.01] p-4 mb-5">
+                    <div class="bg-white rounded-lg  shadow hover:shadow-md transition-all transform hover:scale-[1.01] p-4 mb-5"
+                        style="width: 99%">
                         <div class="flex items-start">
                             <button
                                 class="mt-1 flex-shrink-0 h-5 w-5
@@ -70,9 +70,14 @@
                                             error reading title
                                         </h3>
                                     @endif
-                                    <button onClick={onDelete} class="text-gray-400 hover:text-red-500">
-                                        <TrashIcon size={16} />
-                                    </button>
+                                    <form wire:submit.prevent="deleteTask({{ $task->id }})">
+                                        @csrf
+                                        <button type="submit" class="text-gray-400 hover:text-red-500">
+                                            <img src="/icons/trash-solid.svg" alt="" srcset=""
+                                                class="w-4 transition-all hover:transform hover:rotate-45">
+                                        </button>
+                                    </form>
+
                                 </div>
                                 <p class="mt-1 text-sm text-gray-500">{{ $task->description }}</p>
                                 <div class="mt-2 flex items-center justify-between">

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Models\Tasks;
@@ -22,3 +21,5 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/createTask', [TaskController::class, 'createTask']);
 
 Route::post('/completedTaskStatus', [TaskController::class, 'statusCompleted'])->name('completed');
+
+

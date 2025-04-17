@@ -11,12 +11,18 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+    public function dashboard()
+    {
+        return view('welcome');
+    }
 
-    public function loginView(){
+    public function loginView()
+    {
         return view('auth.login');
     }
 
-    public function registerView(){
+    public function registerView()
+    {
         return view('auth.register');
     }
 
@@ -50,7 +56,6 @@ class UserController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
             $token = $user->createToken('plannerApp')->plainTextToken;
-
         } else {
             return response()->json([
                 'message' => 'Invalid credentials'
